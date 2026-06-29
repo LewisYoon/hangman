@@ -25,8 +25,6 @@ async function loadWords() {
   }
 }
 
-loadWords();
-
 function displayKeyboard() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   for (let i = 0; i < alphabet.length; i++) {
@@ -35,8 +33,51 @@ function displayKeyboard() {
     btn.id = "btn-" + char;
     btn.className = "keyboard__key";
     btn.textContent = char.toUpperCase();
-    btn.addEventListener("click", () => makeGuess(char));
+    btn.addEventListener("click", () => guess(char));
     keyboard.appendChild(btn);
   }
 }
-displayKeyboard();
+
+function startGame() {
+  guessedLetters = [];
+
+  incorrectGuesses = 0;
+
+  message.textContent = "";
+
+  message.className = "hangman__message";
+
+  const randomIndex = Math.floor(Math.random() * words.length);
+
+  answer = words[randomIndex].toLowerCase();
+
+  renderWords();
+}
+
+function renderWords() {
+  let render = "";
+
+  for (let i = 0; i < answer.length; i++) {
+    const char = answer[i];
+
+    if (guessedLetters.includes(char)) {
+      render += char.toUpperCase() + " ";
+    } else {
+      render += "_ ";
+    }
+  }
+
+  wordDisplay.textContent = render.trim();
+
+  image.src = "assets/img/h-" + incorrectGuesses + ".jpg";
+}
+
+async function play() {
+  await loadWords();
+
+  displayKeyboard();
+
+  startGame();
+}
+
+play();
