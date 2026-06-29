@@ -38,6 +38,14 @@ const displayKeyboard = () => {
   }
 };
 
+const setKeyboardState = (disabled) => {
+  keyboard.querySelectorAll("button").forEach((btn) => {
+    btn.disabled = disabled;
+
+    btn.classList.toggle("keyboard__key--disabled", disabled);
+  });
+};
+
 const startGame = () => {
   guessedLetters = [];
   incorrectGuesses = 0;
@@ -45,6 +53,7 @@ const startGame = () => {
   message.className = "hangman__message";
   const randomIndex = Math.floor(Math.random() * words.length);
   answer = words[randomIndex].toLowerCase();
+  setKeyboardState(false);
   renderWords();
 };
 
@@ -75,7 +84,32 @@ const guess = (letter) => {
     incorrectGuesses++;
   }
   renderWords();
+  gameResult();
 };
+
+const gameResult = () => {
+  const won = answer.split("").every((l) => guessedLetters.includes(l));
+  const lost = incorrectGuesses >= maxGuesses;
+
+  if (!won && !lost) return;
+
+  if (won) {
+    message.textContent = "Congratuation!";
+
+    setKeyboardState(true);
+  } else {
+    message.textContent = `Game over, the word was: ${answer}`;
+
+    setKeyboardState(true);
+  }
+  updateStats();
+};
+
+const restartGame = () => {
+  startGame();
+};
+
+resetBtn.addEventListener("click", restartGame);
 
 const play = async () => {
   await loadWords();
