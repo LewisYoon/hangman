@@ -8,7 +8,7 @@ Guess the hidden word before game over
 
 ## How to play
 
-Downlad and run HTML or https://lewisyoon.github.io/hangman/
+Downlad and run HTML on live server or visit following link: https://lewisyoon.github.io/hangman
 
 ## Features
 
