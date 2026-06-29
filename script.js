@@ -49,17 +49,32 @@ const startGame = () => {
 };
 
 const renderWords = () => {
-  let render = "";
-  for (let i = 0; i < answer.length; i++) {
-    const char = answer[i];
-    if (guessedLetters.includes(char)) {
-      render += char.toUpperCase() + " ";
-    } else {
-      render += "_ ";
-    }
-  }
-  wordDisplay.textContent = render.trim();
+  const render = answer
+    .split("")
+    .map((char) => (guessedLetters.includes(char) ? char.toUpperCase() : "_"))
+    .join(" ");
+  wordDisplay.textContent = render;
   image.src = "assets/img/h-" + incorrectGuesses + ".jpg";
+};
+
+const guess = (letter) => {
+  letter = letter.toLowerCase();
+  if (
+    guessedLetters.includes(letter) ||
+    incorrectGuesses >= maxGuesses ||
+    !answer
+  )
+    return;
+  guessedLetters.push(letter);
+  const button = document.querySelector("#btn-" + letter);
+  if (button) {
+    button.disabled = true;
+    button.classList.add("keyboard__key--disabled");
+  }
+  if (!answer.includes(letter)) {
+    incorrectGuesses++;
+  }
+  renderWords();
 };
 
 const play = async () => {
