@@ -54,7 +54,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 400px;
+  height: 300px;
 }
 .hangman__image {
   width: auto;
@@ -79,8 +79,8 @@ body {
 }
 .hangman__keyboard-key {
   font-family: "JetBrains Mono", monospace;
-  width: 5em;
-  height: 5em;
+  width: 3.5em;
+  height: 3.5em;
   border-radius: 6px;
   background-color: #29292e;
   color: #e2e2e2;
@@ -147,39 +147,6 @@ body {
   border-radius: 4px;
   padding: 0.2rem 0.5rem;
   color: #888888;
-}
-
-@media (min-width: 768px) {
-  .hangman {
-    padding: 2.5rem;
-  }
-  .hangman__title {
-    font-size: 4rem;
-    margin-bottom: 0.5em;
-  }
-  .hangman__scoreboard {
-    font-size: 1.5rem;
-    margin-bottom: 0.5em;
-  }
-  .hangman__img-container {
-    height: 420px;
-  }
-  .hangman__word-display {
-    font-size: 2.5rem;
-    margin-bottom: 0.5em;
-  }
-  .hangman__keyboard {
-    gap: 1rem;
-  }
-  .hangman__message {
-    font-size: 2.5rem;
-    margin-bottom: 0.5em;
-  }
-  .hangman__reset-btn {
-    font-size: 1.5rem;
-    padding: 0.6rem 1.4rem;
-    margin-bottom: 1rem;
-  }
 }
 
 /*# sourceMappingURL=style.css.map */
