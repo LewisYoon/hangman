@@ -28,7 +28,7 @@ Downlad and run HTML or https://lewisyoon.github.io/hangman/
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - HTML5
 
