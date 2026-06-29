@@ -34,7 +34,7 @@ const displayKeyboard = () => {
     const char = alphabet[i];
     const btn = document.createElement("button");
     btn.id = "btn-" + char;
-    btn.className = "keyboard__key";
+    btn.className = "hangman__keyboard-key";
     btn.textContent = char.toUpperCase();
     btn.addEventListener("click", () => guess(char));
     keyboard.appendChild(btn);
@@ -45,7 +45,7 @@ const setKeyboardState = (disabled) => {
   keyboard.querySelectorAll("button").forEach((btn) => {
     btn.disabled = disabled;
 
-    btn.classList.toggle("keyboard__key--disabled", disabled);
+    btn.classList.toggle("hangman__keyboard-key--disabled", disabled);
   });
 };
 
@@ -81,7 +81,7 @@ const guess = (letter) => {
   const button = document.querySelector("#btn-" + letter);
   if (button) {
     button.disabled = true;
-    button.classList.add("keyboard__key--disabled");
+    button.classList.add("hangman__keyboard-key--disabled");
   }
   if (!answer.includes(letter)) {
     incorrectGuesses++;
@@ -98,11 +98,13 @@ const gameResult = () => {
 
   if (won) {
     message.textContent = "Congratuation!";
+    message.classList.add("hangman__message--win");
     wins++;
     usedWords.push({ word: answer, status: "won" });
     setKeyboardState(true);
   } else {
     message.textContent = `Game over, the word was: ${answer}`;
+    message.classList.add("hangman__message--loss");
     losses++;
     usedWords.push({ word: answer, status: "lost" });
 

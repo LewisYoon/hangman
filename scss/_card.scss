@@ -1,0 +1,203 @@
+@use "./variables/colors" as *;
+@use "./variables/fonts" as *;
+
+.hangman {
+  background-color: $color-card;
+  border: 1px solid $color-border;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+
+  padding: 1.25rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: $color-primary;
+    margin-bottom: 0.4em;
+  }
+
+  &__scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.75em;
+    color: $color-text-muted;
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .scoreboard__count {
+      font-weight: 700;
+      color: $color-text;
+    }
+  }
+
+  &__img-container {
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+  }
+
+  &__image {
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    border: 2px solid $color-border;
+    border-radius: 8px;
+  }
+
+  &__word-display {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5em;
+    min-height: 1.8em;
+  }
+
+  &__keyboard {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  &__keyboard-key {
+    font-family: $primary-text;
+    width: 5em;
+    height: 5em;
+    border-radius: 6px;
+    background-color: $color-border;
+    color: $color-text;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      transform 0.1s ease;
+
+    &:hover:not(:disabled) {
+      background-color: $color-success;
+      transform: translateY(-2px);
+    }
+
+    &:disabled,
+    &--disabled {
+      background-color: #888888;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+
+  &__message {
+    font-size: 1.2rem;
+    font-weight: 600;
+    min-height: 1.5em;
+    margin-bottom: 0.5em;
+
+    &--win {
+      color: $color-success;
+    }
+
+    &--loss {
+      color: $color-error;
+    }
+  }
+
+  &__reset-btn {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.6rem 1.4rem;
+    background-color: $color-primary;
+    color: $color-bg;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition:
+      background-color 0.2s ease,
+      transform 0.1s ease;
+
+    &:hover {
+      background-color: $color-primary-hover;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__history {
+    font-size: 0.9rem;
+    color: $color-text-muted;
+    margin-bottom: 0.4rem;
+    text-align: left;
+  }
+
+  &__history-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    text-align: left;
+
+    li {
+      font-size: 0.8rem;
+      background-color: $color-border;
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+      color: $color-text-muted;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .hangman {
+    padding: 2.5rem;
+
+    &__title {
+      font-size: 4rem;
+      margin-bottom: 0.5em;
+    }
+
+    &__scoreboard {
+      font-size: 1.5rem;
+      margin-bottom: 0.5em;
+    }
+
+    &__img-container {
+      height: 420px;
+    }
+
+    &__word-display {
+      font-size: 2.5rem;
+      margin-bottom: 0.5em;
+    }
+
+    &__keyboard {
+      gap: 1rem;
+    }
+
+    &__message {
+      font-size: 2.5rem;
+      margin-bottom: 0.5em;
+    }
+
+    &__reset-btn {
+      font-size: 1.5rem;
+      padding: 0.6rem 1.4rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

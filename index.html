@@ -11,11 +11,11 @@
     <div class="hangman">
       <h1 class="hangman__title">Hangman</h1>
 
-      <div class="scoreboard">
-        <span class="scoreboard__item"
+      <div class="hangman__scoreboard">
+        <span
           >Wins:<span id="wins-count" class="scoreboard__count">0</span></span
         >
-        <span class="scoreboard__item"
+        <span
           >Losses:<span id="losses-count" class="scoreboard__count"
             >0</span
           ></span
@@ -31,20 +31,18 @@
         />
       </div>
 
-      <p id="word-display" class="word-display"></p>
+      <p id="word-display" class="hangman__word-display"></p>
 
       <h2 id="message" class="hangman__message"></h2>
 
-      <div id="keyboard" class="keyboard"></div>
+      <div id="keyboard" class="hangman__keyboard"></div>
 
       <br />
 
       <button id="reset-btn" class="hangman__reset-btn">Play Again</button>
 
-      <div class="history">
-        <h3 class="history__title">Used Words:</h3>
-        <ul id="used-words-list" class="history__list"></ul>
-      </div>
+      <h3 class="hangman__history">Used Words:</h3>
+      <ul id="used-words-list" class="hangman__history-list"></ul>
     </div>
   </body>
 </html>
