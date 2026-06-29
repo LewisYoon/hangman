@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hangman Game</title>
+    <script defer src="app.js"></script>
+  </head>
+
+  <body>
+    <div class="hangman">
+      <h1 class="hangman__title">Hangman</h1>
+
+      <div class="scoreboard">
+        <span class="scoreboard__item"
+          >Wins:<span id="wins-count" class="scoreboard__count">0</span></span
+        >
+        <span class="scoreboard__item"
+          >Losses:<span id="losses-count" class="scoreboard__count"
+            >0</span
+          ></span
+        >
+      </div>
+
+      <div class="hangman__graphic-container">
+        <img
+          id="image"
+          class="hangman__image"
+          src="./assets/img/h-0.jpg"
+          alt="Hangman"
+        />
+      </div>
+
+      <p id="word-display" class="word-display"></p>
+
+      <h2 id="message" class="hangman__message"></h2>
+
+      <div id="keyboard" class="keyboard"></div>
+
+      <br />
+
+      <button id="reset-btn" class="hangman__reset-btn">Play Again</button>
+
+      <div class="history">
+        <h3 class="history__title">Used Words:</h3>
+        <ul id="used-words-list" class="history__list"></ul>
+      </div>
+    </div>
+  </body>
+</html>
