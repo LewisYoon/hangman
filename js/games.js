@@ -13,6 +13,9 @@ const wordDisplay = document.querySelector("#word-display");
 const keyboard = document.querySelector("#keyboard");
 const message = document.querySelector("#message");
 const resetBtn = document.querySelector("#reset-btn");
+const winsCount = document.querySelector("#wins-count");
+const lossesCount = document.querySelector("#losses-count");
+const usedWordsList = document.querySelector("#used-words-list");
 
 const loadWords = async () => {
   try {
@@ -95,14 +98,35 @@ const gameResult = () => {
 
   if (won) {
     message.textContent = "Congratuation!";
-
+    wins++;
+    usedWords.push({ word: answer, status: "won" });
     setKeyboardState(true);
   } else {
     message.textContent = `Game over, the word was: ${answer}`;
+    losses++;
+    usedWords.push({ word: answer, status: "lost" });
 
     setKeyboardState(true);
   }
   updateStats();
+};
+
+const updateStats = () => {
+  winsCount.textContent = wins;
+
+  lossesCount.textContent = losses;
+
+  usedWordsList.innerHTML = "";
+
+  usedWords.forEach(({ word, status }) => {
+    const li = document.createElement("li");
+
+    li.textContent = word.toUpperCase();
+
+    li.className = status === "won" ? "won" : "lost";
+
+    usedWordsList.appendChild(li);
+  });
 };
 
 const restartGame = () => {
@@ -111,12 +135,8 @@ const restartGame = () => {
 
 resetBtn.addEventListener("click", restartGame);
 
-const play = async () => {
+export const play = async () => {
   await loadWords();
-
   displayKeyboard();
-
   startGame();
 };
-
-play();
